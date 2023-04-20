@@ -1,0 +1,13 @@
+package com.boot.dto;
+
+import lombok.Data;
+
+@Data
+public class EmployeeDetailDTO
+{
+     private String employeeName;
+     
+     private String employeeEMail;
+     
+     private String employeeContact;
+}

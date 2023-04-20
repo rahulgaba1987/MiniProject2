@@ -1,0 +1,18 @@
+package com.boot.service;
+
+import java.util.List;
+
+import com.boot.dto.EnquiryForm;
+import com.boot.dto.EnquirySearchCriteria;
+
+public interface EnquiryService 
+{
+    public boolean addEnquiry(EnquiryForm enquiry);
+    
+    public List<EnquiryForm> getAllEnquiries();
+    
+    public List<EnquiryForm> getEnquiriesBySearchCriteria(EnquirySearchCriteria criteria);
+    
+    public boolean updateEnquiryById(int enquiryId);
+    
+}

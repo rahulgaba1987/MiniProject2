@@ -1,0 +1,19 @@
+package com.boot.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+
+@Entity
+public class EmployeeEntity
+{
+     private int employeeId;
+     
+     private String employeeName;
+     
+     private String employeeEMail;
+     
+     private String employeeContact;
+     
+     @Column(columnDefinition = "varchar(255) default 'Locked'")
+     private String employeeStatus;
+}

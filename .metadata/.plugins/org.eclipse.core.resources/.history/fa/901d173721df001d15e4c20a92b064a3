@@ -1,0 +1,52 @@
+package com.boot.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.boot.dto.SignUpForm;
+import com.boot.service.UserService;
+
+import ch.qos.logback.core.model.Model;
+
+@Controller
+public class UserController 
+{
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/login")
+	public String home() 
+	{
+		return "login";
+	}
+
+	@PostMapping("/signup")
+	public String signupPage(@RequestBody SignUpForm form,Model model) 
+	{
+		boolean status = this.userService.signUp(form);
+		
+		if(status)
+		{
+			model.addAttribute("scuccessMsg","Check your email");
+		}
+		else
+		{
+			model.addAttribute("errorMsg","Problem occurred ");
+		}
+		return "signup";
+	}
+	
+	@GetMapping("/forgot")
+	public String forgotPassword()
+    {
+		return "forgot";
+	}
+	
+	@GetMapping("/unlock")
+	public String unlockPage() {
+		return "unlock";
+	}
+
+}

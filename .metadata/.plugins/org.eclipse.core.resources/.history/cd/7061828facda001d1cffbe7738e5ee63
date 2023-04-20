@@ -1,0 +1,6 @@
+package com.boot.repository;
+
+public interface EmployeeRepository extends JpaRepo
+{
+
+}

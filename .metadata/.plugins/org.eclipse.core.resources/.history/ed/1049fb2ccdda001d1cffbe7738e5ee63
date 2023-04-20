@@ -1,0 +1,24 @@
+package com.boot.entity;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@NoArgsConstructor
+@ToString
+public class StudentEnquiryEntity
+{
+
+}
+//ENQUIRY_ID			INTEGER		PK AUTO_INCREMENT
+//STUDENT_NAME			VARCHAR
+//PHNO				INTEGER
+//CLASS_MODE			VARCHAR
+//COURSE_NAME			VARCHAR
+//ENQUIRY_STATUS		VARCHAR		(Default : NEW)
+//CREATED_DATE			DATE
+//UPDATED_DATE			DATE
+//USER_ID				INTEGER		FK  REF : AIT_USER_DTLS

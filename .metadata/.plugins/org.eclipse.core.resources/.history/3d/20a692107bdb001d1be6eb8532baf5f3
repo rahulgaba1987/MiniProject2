@@ -1,0 +1,14 @@
+package com.boot.service;
+
+import java.util.List;
+
+import com.boot.dto.EnquiryForm;
+
+public interface EnquiryService 
+{
+    public boolean addEnquiry(EnquiryForm enquiry);
+    
+    public List<EnquiryForm> getAllEnquiries();
+    
+    
+}

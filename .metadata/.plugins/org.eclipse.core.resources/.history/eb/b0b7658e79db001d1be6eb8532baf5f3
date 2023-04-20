@@ -1,0 +1,17 @@
+package com.boot.service;
+
+import org.springframework.stereotype.Service;
+
+import com.boot.dto.SignUpForm;
+import com.boot.dto.UnlockForm;
+
+
+public interface UserService 
+{
+	public boolean addUser(SignUpForm form);
+	
+	public boolean unlockUser(UnlockForm form);
+	
+	
+
+}

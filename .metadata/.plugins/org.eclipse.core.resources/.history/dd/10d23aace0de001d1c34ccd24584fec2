@@ -1,0 +1,11 @@
+package com.boot.util;
+
+public class PwdUtils 
+{
+	
+	public String generateRandomPassword()
+	{
+		return "";
+	}
+
+}

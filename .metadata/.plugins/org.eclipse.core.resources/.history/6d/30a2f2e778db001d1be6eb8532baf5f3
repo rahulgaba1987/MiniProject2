@@ -1,0 +1,11 @@
+package com.boot.serviceimplementation;
+
+import org.springframework.stereotype.Service;
+
+import com.boot.service.EnquiryService;
+
+@Service
+public class EnquiryServiceImpl // implements EnquiryService
+{
+
+}
