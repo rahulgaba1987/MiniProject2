@@ -21,7 +21,7 @@
 				<img   th:src="@{${'/images/logo.jpg'}}"></img>
                  <h3>Please create Account here</h3>
               
-                <p th:text="${successMsg}" class="text-success"></p>
+               
                 <p th:text="${errorMsg}"   class="text-danger"></p>
 
 				<form th:action="@{/signup}" th:object="${user}"  method="POST">

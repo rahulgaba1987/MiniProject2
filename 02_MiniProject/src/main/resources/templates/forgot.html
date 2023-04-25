@@ -13,31 +13,38 @@
 
 	<div class="container mt-5">
 
-	
+	<p th:text="${successMsg}" class="text-success"></p>
+               
 	<div class="row">
+	            
 		<div class="col-md-6">
 			<div class="card">
 				<div class=" card-body">
 				<div class="text-center">
 				   <img   th:src="@{${'/images/logo.jpg'}}"></img>
 				<br>
+				
                  <h3>Recover your password</h3>
 				</div>
 				
                 <br><br>
-				<form>
+                <div class="text-center">
+                 <p  th:text="${msg}"   class="text-danger"></p>
+                </div>
+                
+				<form th:action="@{/forgotPsw}" method="POST">
 					<div class="mb-3">
 					
 						<input type="email" 
 						        class="form-control"
-						        nme="employeeEmail"
+						        name="userEmail"
 						        placeholder="Enter your Email address"
-						         id="employeeEmail" 
+						         id="userEmail" 
 						         aria-describedby="emailHelp">
 						
 					</div>
 					
-					<button type="submit" style="width: 100%;" class="btn btn-primary">Submit</button>
+					<input type="submit" style="width: 100%;" class="btn btn-primary" value="Recover PAssword"></input>
 				</form>
 				<br>
 				

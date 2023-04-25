@@ -11,9 +11,9 @@ public interface UserService
 	
 	public boolean unlockUser(UnlockForm form);
 	
-	public boolean checkLogin(LoginForm login);
+	public String checkLogin(LoginForm login);
 	
-	public boolean forgotPassword(String email);
+	public String forgotPassword(String email);
 	
 	public String emailCheck(String email);
 	

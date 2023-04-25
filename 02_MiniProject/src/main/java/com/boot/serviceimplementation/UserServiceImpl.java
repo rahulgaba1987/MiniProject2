@@ -66,27 +66,90 @@ public class UserServiceImpl  implements UserService
 		
 		
 		emailUtils.sendEmail(to,subject, body.toString());
-		
+	
 		return true;
 	}
 
 	@Override
 	public boolean unlockUser(UnlockForm form) 
 	{
+		UserEntity entity = this.userRepository.findByUserEmail(form.getEmail());
+		
+		if(entity.getPassword().equals(form.getTemporaryPassword()))
+		{     
+			entity.setPassword(form.getNewPassword());
+			entity.setUserStatus("UnLocked");
+			this.userRepository.save(entity);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String checkLogin(LoginForm login)
+	{
+		 UserEntity userEntity = this.userRepository.findByUserEmailAndPassword(login.getUserEmail(),login.getPassword());
+		
+		 if(userEntity==null)
+		 {
+			 return "invalid Credentials";
+		 }
+		 if(userEntity.getUserStatus().equals("Locked"))
+		 {
+			 return "Your Account Locked";
+		 }
+		 return "success";
+	}
+
+	@Override
+	public String forgotPassword(String email) 
+	{
+		
+		if(email==null)
+		{
+			return "Invalid Email ID";
+		}
+				
+         UserEntity userEntity = this.userRepository.findByUserEmail(email);
+  
+         if(userEntity!=null)
+         {
+        	 String to = userEntity.getUserEmail();
+     		
+     		String subject= "Recoved your Password |";
+     		
+     		StringBuffer body = new StringBuffer("");
+     		body.append("<h1> Use below  password to unlock your account </h1>");
+     		
+     		body.append("<br>");
+     		
+     		body.append("Recovered Password : "+userEntity.getPassword());
+     		
+     		body.append("<br>");
+     		
+     		
+     		body.append("<a href=\"http://localhost:8080/login\">Click Here To Unlock Your Account</a>");
+     		
+     		
+     		boolean status= emailUtils.sendEmail(to,subject, body.toString());
+            if(status)
+            {
+            	return "Password sent to your E-email";
+            }
+            else
+            {
+            	 return "Email does not exist.";
+            }
+     		
+         }
+         else
+         {
+        	 return "Email Id does not exist";
+         }
+		
+		
+		
 	
-		return false;
-	}
-
-	@Override
-	public boolean checkLogin(LoginForm login) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean forgotPassword(String email) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

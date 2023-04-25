@@ -20,12 +20,19 @@
 				<div class=" card-body">
 				<img   th:src="@{${'/images/logo.jpg'}}"></img>
                  <h3>Unlock your Account here</h3>
-
-				<form>
+                  
+                <p th:text="${successMsg}" class="text-success"></p>
+                <p th:text="${errorMsg}"   class="text-danger"></p>
+				<form th:action="@{/unlock}" th:object="${unlock}" method="post">
 				<br>
+				    <div>
+				       <h3> Your email is : <p th:text="${unlock.email}">   </p></h3>
+				       <input type="hidden" id="email" name="email"   th:field="${unlock.email}">
+				    </div>
 					<div class="mb-3">
 
 						<input type="text"
+						       th:field="*{temporaryPassword}"
 						       class="form-control" 
 						       id="temporaryPassword"
 						       name="temporaryPassword"
@@ -36,6 +43,7 @@
 					<div class="mb-3">
 						
 						<input type="password"
+						       th:field="*{newPassword}"
 						       class="form-control" 
 						        placeholder="New Password"
 						        name="newPassword"
@@ -45,12 +53,13 @@
 						
 						<input type="password"
 						       class="form-control" 
+						        th:field="*{confirmPassword}"
 						        placeholder="Confirm passwordr"
 						        name="confirmPassword"
 						     id="confirmPassword">
 					</div>
 					
-					<a type="button" style="width: 100%;" class="btn btn-primary">Unlock</a>
+					<input type="submit" style="width: 100%;" class="btn btn-primary" value="Unlock"></input>
 				<br><br>
 				   Do you have an account? <a th:href="@{/login}" type="button" >Login here</a>
 				</form>
